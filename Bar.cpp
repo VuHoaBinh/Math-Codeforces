@@ -68,7 +68,8 @@ int main(){
 	cout << num << endl;
 }
 
-
+// => O(n) = n*11
+// => speed = 0 ms
 
 
 
