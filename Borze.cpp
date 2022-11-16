@@ -1,5 +1,5 @@
 /*Ternary numeric notation is quite popular in Berland. 
-To telegraph the ternary number the Borze alphabet is used. Digit 0 is transmitted as «.», 1 as «-.» and 2 as «--». 
+To telegraph the ternary number the Borze alphabet is used. Digit 0 is transmitted as Â«.Â», 1 as Â«-.Â» and 2 as Â«--Â». 
 You are to decode the Borze code, i.e. to find out the ternary number given its representation in Borze alphabet.
 
 Input
@@ -47,3 +47,5 @@ int main(){
 	}
 	cout << trans;
 }
+//=> O(n) = n
+//=> speed = 30 ms
