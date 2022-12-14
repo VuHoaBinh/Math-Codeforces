@@ -39,7 +39,8 @@ int main(){
         cin >> number;
         a[i] = (-number);
     }
-    sort(a,a+n,cmp); // decreasing order of elements in array
+    //sort(a,a+n,cmp); // decreasing order of elements in array
+    sort(a,a+n,greater<int>());
     number=0;
     int sum=0;
     for( int i=0;i<m;i++){
