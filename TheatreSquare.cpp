@@ -1,6 +1,6 @@
-/*Theatre Square in the capital city of Berland has a rectangular shape with the size n × m meters. 
+/*Theatre Square in the capital city of Berland has a rectangular shape with the size n Ã— m meters. 
 On the occasion of the city's anniversary, a decision was taken to pave the Square with square granite flagstones.
- Each flagstone is of the size a × a.
+ Each flagstone is of the size a Ã— a.
 
 What is the least number of flagstones needed to pave the Square? 
 It's allowed to cover the surface larger than the Theatre Square, but the Square has to be covered. 
@@ -24,20 +24,17 @@ output: 4
 using namespace std;
 
 int main(){
-	unsigned long long n,m,a;
-	cin >> n >> m >> a;
-	if(n%a!=0){
-		n=(n/a)+1;	
+	unsigned long long nNumber,mNumber,aNumber;
+	cin >> nNumber >> mNumber >> aNumber;
+	if(nNumber % aNumber !=0){
+		nNumber = (nNumber/aNumber)+1;	
 	}else
-		n=n/a;
-	if(m%a!=0){
-		m=(m/a)+1;	
+		nNumber = nNumber/aNumber;
+	if(mNumber % aNumber !=0){
+		mNumber = (mNumber/aNumber)+1;	
 	}else
-		m=m/a;	
-	cout << m*n;
-
-
-
+		mNumber = mNumber/aNumber;	
+	cout << mNumber * nNumber;
 }
 
 
