@@ -1,54 +1,65 @@
-/*In Berland a money reform is being prepared. New coins are being introduced. 
-After long economic calculations was decided that the most expensive coin should possess the denomination of exactly n Berland dollars.
- Also the following restriction has been introduced for comfort: 
- the denomination of each coin should be divisible by the denomination of any cheaper coin.
-  It is known that among all the possible variants the variant with the largest number of new coins will be chosen. 
-  Find this variant. Print in the order of decreasing of the coins' denominations.
+/*One day Vasya came across three Berland coins. They didn't have any numbers that's why Vasya didn't understand how their denominations differ. He supposed that if one coin is heavier than the other one, then it should be worth more. Vasya weighed all the three pairs of coins on pan balance scales and told you the results. Find out how the deminations of the coins differ or if Vasya has a mistake in the weighting results. No two coins are equal.
 
 Input
-The first and only line contains an integer n (1 ≤ n ≤ 106) which represents the denomination of the most expensive coin.
+The input data contains the results of all the weighting, one result on each line. It is guaranteed that every coin pair was weighted exactly once. Vasya labelled the coins with letters «A», «B» and «C». Each result is a line that appears as (letter)(> or < sign)(letter). For example, if coin "A" proved lighter than coin "B", the result of the weighting is A<B.
 
 Output
-Print the denominations of all the coins in the order of decreasing. 
-The number of coins must be the largest possible (with the given denomination n of the most expensive coin).
- Also, the denomination of every coin must be divisible by the denomination of any cheaper coin. 
- Naturally, the denominations of all the coins should be different. If there are several solutins to that problem, print any of them.
-
+It the results are contradictory, print Impossible. Otherwise, print without spaces the rearrangement of letters «A», «B» and «C» which represent the coins in the increasing order of their weights.
 
 Example
-input
-10
-output: 
-10 5 1
+Input: 
+A>B
+C<B
+A>C
+Output: CBA
 
-input
-4
-output: 
-4 2 1
-
-input:
-3
-output:
-3 1
+Input: 
+A<B
+B>C
+C>A
+Output: ACB
 
 */
 #include<bits/stdc++.h>
 using namespace std;
 
 int main(){
-	int n; cin >> n;
-	vector<int> v;
-	v.push_back(n);
-	for( int i=2;n>1;i++){
-		while(n%i==0){
-			n/=i;
-			v.push_back(n);
+	int num[3];
+	memset(num, 0, sizeof(num));
+	char string[10];
+	for(int i=0;i<3;i++){
+		cin >> string;
+		if (string[1]=='>' && string[0]=='A'){
+			num[0]++;
+		}else if (string[1]=='>' && string[0]=='B'){
+			num[1]++;
+		}else if (string[1]=='>' && string[0]=='C'){
+			num[2]++;
+		}else if (string[1]=='<' && string[2]=='A'){
+			num[0]++;
+		}else if (string[1]=='<' && string[2]=='B'){
+			num[1]++;
+		}else 
+			num[2]++;
+	}
+
+	int max1,mid1,min1;
+	if(num[0]==num[1] || num[1]==num[2] || num[2]==num[0]){
+		cout <<"Impossible" << endl;
+	}else
+	{
+		for(int i=0; i<3;i++) {
+			if (num[i]== 2){
+				max1 =i;
+			}
+			if (num[i] == 0){
+				min1 = i;
+			}
+			if(num[i]==1){
+				mid1 = i;
+			}
 		}
+		printf("%c%c%c",min1 + 'A', mid1 +'A',max1 + 'A');
 	}
-	for(auto i=0;i<v.size();i++){
-		cout << v[i] << " ";
-	}
+
 }
-
-
-
